@@ -1,0 +1,134 @@
+.dashboard-container {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .dashboard-hero {
+    margin-bottom: 3rem;
+    border: 1px solid var(--neon-pink);
+    box-shadow: 0 0 20px rgba(255, 42, 109, 0.3);
+  }
+  
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  /* Cyberpunk Text Styles */
+  .cyber-text {
+    color: #eee;
+    line-height: 1.6;
+  }
+  
+  .neon-accent {
+    color: var(--neon-yellow);
+    text-shadow: 0 0 5px var(--neon-yellow);
+  }
+  
+  /* Cyberpunk List Styles */
+  .cyber-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .cyber-list li {
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  
+  .cyber-list li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--neon-green);
+  }
+  
+  .cyber-link {
+    color: var(--neon-blue);
+    text-decoration: none;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .link-text {
+    position: relative;
+  }
+  
+  .link-text::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background: var(--neon-blue);
+    transition: width 0.3s;
+  }
+  
+  .cyber-link:hover .link-text::after {
+    width: 100%;
+  }
+  
+  .cyber-link:hover {
+    color: var(--neon-green);
+  }
+  
+  /* Progress Bar Styles */
+  .progress-container {
+    margin-top: 1rem;
+  }
+  
+  .progress-bar {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple));
+    border-radius: 3px;
+    animation: progress-glow 2s infinite alternate;
+  }
+  
+  @keyframes progress-glow {
+    0% { box-shadow: 0 0 5px var(--neon-pink); }
+    100% { box-shadow: 0 0 15px var(--neon-pink); }
+  }
+  
+  .progress-text {
+    color: var(--neon-green);
+    font-size: 0.9rem;
+    text-align: right;
+  }
+  
+  /* Data Display Styles */
+  .cyber-data {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .data-highlight {
+    color: var(--neon-yellow);
+    text-shadow: 0 0 5px rgba(249, 240, 2, 0.3);
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .dashboard-container {
+      padding: 1rem;
+    }
+    
+    .dashboard-grid {
+      grid-template-columns: 1fr;
+    }
+  }

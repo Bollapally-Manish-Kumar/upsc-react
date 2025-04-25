@@ -1,0 +1,113 @@
+/* General Container */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #0a0a0a;
+  color: white;
+  padding-bottom: 50px; /* Added space for footer */
+}
+
+/* Form Container */
+.login-form-container {
+  background: rgba(13, 2, 33, 0.9);
+  padding: 3rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 255, 157, 0.2);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Form Title */
+.form-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--neon-pink);
+  font-weight: bold;
+}
+
+/* Instructions Text */
+.login-instructions {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--neon-blue);
+}
+
+/* Input Group */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+  align-items: flex-start;
+}
+
+.input-group label {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--neon-blue);
+}
+
+.input-group input {
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-bottom: 2px solid var(--neon-purple);
+  color: white;
+  width: 100%;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.input-group input:focus {
+  border-bottom: 2px solid var(--neon-yellow);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Submit Button */
+.login-button {
+  background: var(--neon-blue);
+  color: black;
+  padding: 14px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.login-button:hover {
+  background: var(--neon-green);
+  color: black;
+}
+
+/* Register Link */
+.register-link {
+  margin-top: 1.5rem;
+  color: var(--neon-pink);
+}
+
+.register-link a {
+  color: var(--neon-green);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  color: var(--neon-blue);
+  margin-top: 2rem;
+}
+
+.footer p {
+  font-size: 1rem;
+  color: var(--neon-blue);
+}
