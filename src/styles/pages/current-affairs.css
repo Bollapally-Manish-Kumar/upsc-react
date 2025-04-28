@@ -68,3 +68,22 @@
     background: var(--neon-yellow);
     transform: scale(1.05);
   }
+  .current-affairs-container {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    background: rgba(13, 2, 33, 0.8);
+  }
+  
+  .current-affairs-content {
+    padding: 2rem;
+  }
+  
+  .current-affairs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  /* Other styles (page-title, cyber-text, etc.) are reused as-is */

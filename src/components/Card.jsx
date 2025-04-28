@@ -30,4 +30,4 @@ const Card = ({
   );
 };
 
-export default Card; // This was missing
+export default Card;

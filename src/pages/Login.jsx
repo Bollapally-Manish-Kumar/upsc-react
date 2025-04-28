@@ -14,7 +14,7 @@ const Login = () => {
 
     try {
       // Custom login logic here
-      if (userId === "test@user.com" && password === "password123") {
+      if (userId === "bmk@gmail.com" && password === "password123") {
         // Redirect to dashboard after successful login
         navigate('/dashboard');
       } else {
