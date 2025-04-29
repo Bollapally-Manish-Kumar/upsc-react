@@ -21,7 +21,7 @@ const Header = ({ isDashboard = false }) => {
           <ul className="nav-links">
             <li><Link to="/current-affairs" className="cyber-link"><span className="icon">📜</span> Current Affairs</Link></li>
             <li><Link to="/essay-practice" className="cyber-link"><span className="icon">📝</span> Essay Practice</Link></li>
-            <li><Link to="/topic-summaries" className="cyber-link"><span className="icon">🧠</span> Topic Summaries</Link></li>
+            <li><Link to="/topic-summaries" className="cyber-link"><span className="icon">🧠</span> Notes</Link></li>
             <li><Link to="/ncert-library" className="cyber-link"><span className="icon">📚</span> NCERT Library</Link></li>
             <li>
               <button onClick={handleLogout} className="cyber-link logout-button">
