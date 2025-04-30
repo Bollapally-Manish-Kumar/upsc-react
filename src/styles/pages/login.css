@@ -1,42 +1,49 @@
-/* General Container */
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   height: 100vh;
-  background-color: #0a0a0a;
-  color: white;
-  padding-bottom: 50px; /* Added space for footer */
+  background: var(--dark-gradient);
+  color: var(--white);
+  padding-bottom: 50px;
 }
 
-/* Form Container */
 .login-form-container {
-  background: rgba(13, 2, 33, 0.9);
+  background: var(--glass-gradient);
+  backdrop-filter: blur(10px);
   padding: 3rem;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 255, 157, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   max-width: 400px;
   width: 100%;
   text-align: center;
+  border: 1px solid var(--light-grey);
+  animation: fadeIn 0.5s ease;
 }
 
-/* Form Title */
 .form-title {
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 2rem;
-  color: var(--neon-pink);
-  font-weight: bold;
+  font-weight: 600;
+  font-family: 'Georgia', serif;
 }
 
-/* Instructions Text */
+.form-title span:first-child {
+  color: var(--white);
+}
+
+.form-title span:last-child {
+  color: var(--red-accent);
+}
+
 .login-instructions {
   font-size: 1.1rem;
   margin-bottom: 2rem;
-  color: var(--neon-blue);
+  color: var(--light-grey);
+  font-family: 'Inter', sans-serif;
 }
 
-/* Input Group */
 .input-group {
   display: flex;
   flex-direction: column;
@@ -47,67 +54,73 @@
 .input-group label {
   font-size: 1rem;
   margin-bottom: 0.5rem;
-  color: var(--neon-blue);
+  color: var(--white);
 }
 
 .input-group input {
   padding: 12px;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  border-bottom: 2px solid var(--neon-purple);
-  color: white;
+  background: var(--glass-gradient);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--light-grey);
+  border-radius: 8px;
+  color: var(--white);
   width: 100%;
   outline: none;
-  transition: all 0.3s;
+  transition: border-color 0.3s ease;
 }
 
 .input-group input:focus {
-  border-bottom: 2px solid var(--neon-yellow);
-  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--gold);
+  box-shadow: 0 0 5px rgba(232, 185, 35, 0.3);
 }
 
-/* Submit Button */
 .login-button {
-  background: var(--neon-blue);
-  color: black;
+  background: var(--gold-gradient);
+  color: var(--navy-blue);
   padding: 14px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 1.1rem;
   width: 100%;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
 }
 
 .login-button:hover {
-  background: var(--neon-green);
-  color: black;
+  transform: translateY(-2px);
+  box-shadow: 0 0 10px rgba(232, 185, 35, 0.5);
 }
 
-/* Register Link */
 .register-link {
   margin-top: 1.5rem;
-  color: var(--neon-pink);
+  color: var(--light-grey);
 }
 
 .register-link a {
-  color: var(--neon-green);
+  color: var(--saffron);
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .register-link a:hover {
-  text-decoration: underline;
+  color: var(--gold);
 }
 
-/* Footer */
 .footer {
   text-align: center;
-  color: var(--neon-blue);
+  color: var(--light-grey);
   margin-top: 2rem;
 }
 
 .footer p {
   font-size: 1rem;
-  color: var(--neon-blue);
+  color: var(--light-grey);
+  font-family: 'Inter', sans-serif;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

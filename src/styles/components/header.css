@@ -1,59 +1,39 @@
-/* header.css */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background: rgba(13, 2, 33, 0.8);
+  padding: 2rem 2rem;
+  background: var(--dark-gradient);
   position: sticky;
   top: 0;
   z-index: 1000;
-  backdrop-filter: blur(5px);
-  overflow: hidden;
-  position: relative;
-  border-bottom: 2px solid var(--neon-green);
+  border-bottom: 1px solid var(--light-grey);
 }
 
-.header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
+.header-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, transparent, rgba(0, 255, 157, 0.2), transparent);
-  z-index: -1;
-}
-
-.header::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    linear-gradient(to right, rgba(0, 255, 157, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 255, 157, 0.05) 1px, transparent 1px);
-  background-size: 20px 20px;
-  z-index: -2;
 }
 
 .logo {
-  color: var(--neon-blue);
-  font-size: 1.8rem;
-  font-family: "Orbitron", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
   margin: 0;
-  position: relative;
-  text-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
-  animation: neonPulse 2s infinite alternate;
 }
 
-@keyframes neonPulse {
-  0% { text-shadow: 0 0 5px rgba(0, 255, 157, 0.5); }
-  100% { text-shadow: 0 0 15px rgba(0, 255, 157, 0.8); }
+.logo-image {
+  max-height: 120px;
+  width: 125px;
+  filter: drop-shadow(0 0 12px var(--saffron));
+  transition: filter 0.3s ease;
+}
+
+.logo-image:hover {
+  filter: drop-shadow(0 0 18px var(--gold));
 }
 
 .nav-links {
@@ -65,34 +45,33 @@
 }
 
 .cyber-link {
-  color: var(--neon-green);
+  color: var(--white);
   text-decoration: none;
   font-size: 1rem;
-  font-family: "Orbitron", sans-serif;
-  transition: all 0.3s;
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  position: relative;
-  background: none;
-  border: none;
-  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .cyber-link .icon {
   font-size: 1.2rem;
-  margin-right: 0.2rem;
+  margin-right: 0.5rem;
 }
 
 .cyber-link:hover {
-  color: var(--neon-yellow);
-  transform: scale(1.1);
-  text-shadow: 0 0 10px var(--neon-yellow);
+  color: var(--gold);
+  transform: translateY(-2px);
 }
 
 .logout-button {
   padding: 0;
   margin: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.header.aos-init.aos-animate{
+  height: 40px;
 }
 
 @media (max-width: 768px) {
@@ -102,9 +81,10 @@
     top: 100%;
     left: 0;
     right: 0;
-    background: rgba(13, 2, 33, 0.9);
+    background: var(--dark-grey);
     padding: 1rem;
     display: none;
+    border: 1px solid var(--light-grey);
   }
 
   .nav-links.active {
@@ -113,10 +93,18 @@
 
   .header {
     flex-direction: column;
-    padding: 1rem;
+    padding: 1.25rem;
+    max-width: 1000px;
+    margin: 0 auto;
   }
 
   .logo {
     margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-image {
+    max-height: 80px;
   }
 }

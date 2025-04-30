@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/components/header.css";
+import logo from "../assets/images/logo-removebg-preview.png";
 
 const Header = ({ isDashboard = false }) => {
   const navigate = useNavigate();
@@ -12,10 +13,11 @@ const Header = ({ isDashboard = false }) => {
 
   return (
     <header className="header" data-aos="fade-down">
-      {/* Make the logo clickable and navigate to home */}
-      <h1 className="logo">
-        <Link to="/dashboard" className="cyber-link">Sarthana</Link>
-      </h1>
+      <div className="logo">
+        <Link to="/dashboard" className="cyber-link">
+          <img src={logo} alt="Sarthana Logo" className="logo-image" />
+        </Link>
+      </div>
       <nav>
         {isDashboard ? (
           <ul className="nav-links">

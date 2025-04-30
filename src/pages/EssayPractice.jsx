@@ -15,7 +15,6 @@ const EssayPractice = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // Categories for dropdown
   const categories = [
     "History",
     "Politics",
@@ -26,7 +25,6 @@ const EssayPractice = () => {
     "Society",
   ];
 
-  // Static fallback questions
   const fallbackQuestions = {
     history: {
       easy: ["Describe a significant event in your country's history."],
@@ -65,21 +63,28 @@ const EssayPractice = () => {
     },
   };
 
-  // Fetch questions when category or difficulty changes
   useEffect(() => {
     const loadQuestions = async () => {
       setLoading(true);
       try {
         const fetchedQuestions = await fetchQuestions(category, difficulty);
         setQuestions(fetchedQuestions.length > 0 ? fetchedQuestions : fallbackQuestions[category][difficulty]);
+        if (!selectedQuestion && fetchedQuestions.length > 0) {
+          setSelectedQuestion(fetchedQuestions[0]);
+        } else if (!selectedQuestion && fallbackQuestions[category][difficulty].length > 0) {
+          setSelectedQuestion(fallbackQuestions[category][difficulty][0]);
+        }
       } catch (err) {
         setError("Failed to fetch questions. Using fallback questions.");
         setQuestions(fallbackQuestions[category][difficulty]);
+        if (!selectedQuestion && fallbackQuestions[category][difficulty].length > 0) {
+          setSelectedQuestion(fallbackQuestions[category][difficulty][0]);
+        }
       }
       setLoading(false);
     };
     loadQuestions();
-  }, [category, difficulty]);
+  }, [category, difficulty, selectedQuestion]);
 
   const handleSubmit = async () => {
     if (!selectedQuestion || !essay.trim()) {
@@ -101,13 +106,14 @@ const EssayPractice = () => {
   return (
     <div className="essay-practice-container">
       <div className="essay-practice-content">
-        <h2 className="page-title">Essay Practice</h2>
+        <h2 className="page-title">
+          <span>Essay</span> <span>Practice</span>
+        </h2>
         <p className="cyber-text">
           Sharpen your essay writing skills with curated UPSC topics. Practice,
           submit, and get feedback: <span className="neon-accent">✍️</span>
         </p>
 
-        {/* Select Topic Container */}
         <Card title="Select Topic" cyberpunk glowColor="yellow">
           <div className="selector-container">
             <label className="cyber-text">Category:</label>
@@ -160,7 +166,6 @@ const EssayPractice = () => {
           {loading && <p className="cyber-text">Loading questions...</p>}
         </Card>
 
-        {/* Write Essay Container */}
         <Card title="Write Essay" cyberpunk glowColor="purple">
           <textarea
             className="cyber-textarea"
@@ -173,7 +178,6 @@ const EssayPractice = () => {
           </Button>
         </Card>
 
-        {/* Evaluation Container */}
         <Card title="Evaluation" cyberpunk glowColor="green">
           {error && <p className="cyber-text error">{error}</p>}
           {evaluation ? (

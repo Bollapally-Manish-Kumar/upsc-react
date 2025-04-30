@@ -1,54 +1,10 @@
-/* register.css */
 .cyberpunk-register {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  position: relative;
-  z-index: 1;
-  color: white;
-  font-family: "Orbitron", sans-serif;
-  overflow: hidden;
-}
-
-/* Animated Gradient Overlay */
-.cyberpunk-register::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: linear-gradient(-45deg, #140d2b, #0d051f, #1a0937, #0a0118);
-  background-size: 400% 400%;
-  animation: gradientGlow 10s ease infinite;
-  z-index: -2;
-}
-
-/* Matrix-like Particle Layer */
-.cyberpunk-register::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
-  background-size: 20px 20px;
-  opacity: 0.1;
-  z-index: -1;
-  animation: flicker 3s infinite linear alternate;
-}
-
-/* Keyframes */
-@keyframes gradientGlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes flicker {
-  0% { opacity: 0.05; }
-  100% { opacity: 0.15; }
+  background: var(--dark-gradient);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
 }
 
 .register-center {
@@ -56,25 +12,35 @@
   align-items: center;
   justify-content: center;
   padding: 4rem 2rem;
-  background: rgba(0, 0, 0, 0.3);
   flex: 1;
 }
 
 .register-form-container {
   width: 100%;
   max-width: 450px;
-  background: rgba(8, 2, 21, 0.95);
-  border: 1px solid var(--neon-green);
-  box-shadow: 0 0 25px var(--neon-green);
+  background: var(--glass-gradient);
+  backdrop-filter: blur(10px);
   padding: 2.5rem;
   border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--light-grey);
+  animation: fadeIn 0.5s ease;
 }
 
 .form-title {
   text-align: center;
   margin-bottom: 2rem;
-  color: var(--neon-blue);
-  font-size: 1.8rem;
+  font-size: 2rem;
+  font-family: 'Georgia', serif;
+  font-weight: 600;
+}
+
+.form-title span:first-child {
+  color: var(--white);
+}
+
+.form-title span:last-child {
+  color: var(--red-accent);
 }
 
 .cyber-form {
@@ -90,71 +56,75 @@
 }
 
 .input-group label {
-  color: var(--neon-pink);
+  color: var(--white);
   font-size: 0.9rem;
 }
 
 .input-group input {
   padding: 12px;
-  background: rgba(255, 255, 255, 0.08);
-  border: none;
-  border-bottom: 2px solid var(--neon-purple);
-  color: white;
-  transition: all 0.3s;
+  background: var(--glass-gradient);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--light-grey);
+  border-radius: 8px;
+  color: var(--white);
+  transition: border-color 0.3s ease;
   outline: none;
   font-size: 1rem;
 }
 
 .input-group input:focus {
-  border-bottom: 2px solid var(--neon-yellow);
-  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--gold);
+  box-shadow: 0 0 5px rgba(232, 185, 35, 0.3);
 }
 
 .cyber-button {
-  background: var(--neon-green);
-  color: black;
+  background: var(--gold-gradient);
+  color: var(--navy-blue);
   border: none;
   padding: 12px;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 1rem;
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  font-family: 'Inter', sans-serif;
 }
 
 .cyber-button:hover {
-  background: var(--neon-yellow);
-  color: black;
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 255, 157, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 0 10px rgba(232, 185, 35, 0.5);
 }
 
 .message {
-  color: var(--neon-blue);
+  color: var(--light-grey);
   font-size: 0.9rem;
   text-align: center;
   margin-top: 1rem;
 }
 
 .login-link {
-  color: #ccc;
+  color: var(--light-grey);
   font-size: 0.9rem;
   text-align: center;
   margin-top: 1rem;
 }
 
 .login-link a {
-  color: var(--neon-blue);
+  color: var(--saffron);
   text-decoration: none;
 }
 
 .login-link a:hover {
-  color: var(--neon-yellow);
-  text-decoration: underline;
+  color: var(--gold);
 }
 
 @media (max-width: 1024px) {
   .register-center {
     padding: 2rem 1rem;
   }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

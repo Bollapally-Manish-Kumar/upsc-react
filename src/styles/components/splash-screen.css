@@ -1,0 +1,53 @@
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--dark-gradient);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    animation: fadeOut 0.5s ease-in-out 1s forwards;
+  }
+  
+  .splash-logo {
+    max-height: 300px;
+    width: auto;
+    filter: drop-shadow(0 0 20px var(--saffron));
+    animation: pulse 1.5s ease-in-out;
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      filter: drop-shadow(0 0 20px var(--saffron));
+    }
+    50% {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 30px var(--gold));
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .splash-logo {
+      max-height: 200px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .splash-logo {
+      max-height: 150px;
+    }
+  }
