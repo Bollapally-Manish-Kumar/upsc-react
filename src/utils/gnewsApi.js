@@ -1,6 +1,7 @@
+// src/api/gnewsApi.js
 import axios from "axios";
 
-const GNEWS_API_KEY = "d5c195d48567e439ef5e72a6f0b6a3e8";
+const GNEWS_API_KEY = process.env.REACT_APP_GNEWS_API_KEY;
 const GNEWS_API_URL = "https://gnews.io/api/v4/search";
 
 const categoryKeywords = {
@@ -32,11 +33,11 @@ export const fetchQuestions = async (category, difficulty) => {
 
     const articles = response.data.articles || [];
     return articles.map((article) => {
-      const title = article.title.split(" - ")[0]; // Remove source
+      const title = article.title.split(" - ")[0];
       return `${difficultyPrompts[difficulty]} the impact of ${title.toLowerCase()}.`;
     });
   } catch (error) {
-    console.error("GNews API error:", error);
+    console.error("GNews API error:", error.response?.data || error.message);
     return [];
   }
 };

@@ -64,6 +64,16 @@ const Dashboard = () => {
         >
           <p className="cyber-text">Access all essential NCERT books categorized for UPSC preparation.</p>
         </Card>
+
+        <Card 
+          title="Official UPSC Website" 
+          buttonText="Visit Now" 
+          buttonLink="https://www.upsc.gov.in"
+          cyberpunk
+          glowColor="orange"
+        >
+          <p className="cyber-text">Access official UPSC resources, notifications, and updates directly.</p>
+        </Card>
       </div>
     </div>
   );

@@ -25,6 +25,8 @@ const Header = ({ isDashboard = false }) => {
             <li><Link to="/essay-practice" className="cyber-link"><span className="icon">📝</span> Essay Practice</Link></li>
             <li><Link to="/topic-summaries" className="cyber-link"><span className="icon">🧠</span> Notes</Link></li>
             <li><Link to="/ncert-library" className="cyber-link"><span className="icon">📚</span> NCERT Library</Link></li>
+            <li><Link to="/quiz" className="cyber-link"><span className="icon">❓</span> Quiz</Link></li>
+            <li><Link to="/mock-test" className="cyber-link"><span className="icon">📋</span> Mock Test</Link></li>
             <li>
               <button onClick={handleLogout} className="cyber-link logout-button">
                 Logout

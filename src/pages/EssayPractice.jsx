@@ -3,7 +3,6 @@ import "../styles/pages/essay-practice.css";
 import Card from "../components/Card";
 import Button from "../components/Button";
 import { evaluateEssay } from "../utils/geminiApi";
-import { fetchQuestions } from "../utils/gnewsApi";
 
 const EssayPractice = () => {
   const [category, setCategory] = useState("politics");
@@ -14,6 +13,7 @@ const EssayPractice = () => {
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [usedQuestions, setUsedQuestions] = useState(new Set());
 
   const categories = [
     "History",
@@ -25,66 +25,71 @@ const EssayPractice = () => {
     "Society",
   ];
 
-  const fallbackQuestions = {
-    history: {
-      easy: ["Describe a significant event in your country's history."],
-      medium: ["Analyze the impact of colonialism on modern society."],
-      hard: ["Evaluate the role of revolutions in shaping global history."],
-    },
-    politics: {
-      easy: ["Explain the importance of voting in a democracy."],
-      medium: ["Discuss the role of political parties in governance."],
-      hard: ["Analyze the impact of populism on global politics."],
-    },
-    environment: {
-      easy: ["Why is recycling important for the environment?"],
-      medium: ["Discuss the effects of deforestation on climate change."],
-      hard: ["Evaluate global efforts to combat climate change."],
-    },
-    technology: {
-      easy: ["Describe the benefits of smartphones in daily life."],
-      medium: ["Analyze the impact of AI on job markets."],
-      hard: ["Evaluate the ethical implications of autonomous vehicles."],
-    },
-    ethics: {
-      easy: ["Why is honesty important in public service?"],
-      medium: ["Discuss the ethics of animal testing in research."],
-      hard: ["Analyze the moral dilemmas of genetic engineering."],
-    },
-    economy: {
-      easy: ["Explain the concept of supply and demand."],
-      medium: ["Discuss the impact of globalization on local economies."],
-      hard: ["Evaluate the effects of universal basic income."],
-    },
-    society: {
-      easy: ["Describe the role of community in personal growth."],
-      medium: ["Analyze the impact of social media on mental health."],
-      hard: ["Evaluate the effects of urbanization on social cohesion."],
-    },
+  const GEMINI_API_KEY = process.env.REACT_APP_GEMINI_API_KEY;
+
+  const generateQuestionsWithGemini = async (category, difficulty) => {
+    setLoading(true);
+    setError("");
+    const newQuestions = [];
+
+    try {
+      const geminiResponse = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${GEMINI_API_KEY}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            contents: [
+              {
+                parts: [
+                  {
+                    text: `Generate 5 unique UPSC-style essay questions for the category "${category}" with a "${difficulty}" difficulty level. The questions should be suitable for UPSC exam preparation and distinct from these previously generated questions: ${Array.from(usedQuestions).join(", ")}.
+
+Format the response as a JSON array of strings like this:
+[
+  "Question 1",
+  "Question 2",
+  "Question 3",
+  "Question 4",
+  "Question 5"
+]`,
+                  },
+                ],
+              },
+            ],
+          }),
+        }
+      );
+
+      const geminiData = await geminiResponse.json();
+      const generatedText = geminiData.candidates[0].content.parts[0].text;
+      const cleanedText = generatedText.replace(/```json\n|\n```/g, "").trim();
+      const generatedQuestions = JSON.parse(cleanedText);
+
+      newQuestions.push(...generatedQuestions);
+      generatedQuestions.forEach((q) => usedQuestions.add(q));
+      setUsedQuestions(new Set(usedQuestions)); // Update the set of used questions
+
+      setQuestions(newQuestions);
+      if (newQuestions.length > 0 && !selectedQuestion) {
+        setSelectedQuestion(newQuestions[0]);
+      }
+    } catch (err) {
+      console.error("Error generating questions with Gemini:", err);
+      setError("Failed to generate questions. Please try again.");
+      setQuestions([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
-    const loadQuestions = async () => {
-      setLoading(true);
-      try {
-        const fetchedQuestions = await fetchQuestions(category, difficulty);
-        setQuestions(fetchedQuestions.length > 0 ? fetchedQuestions : fallbackQuestions[category][difficulty]);
-        if (!selectedQuestion && fetchedQuestions.length > 0) {
-          setSelectedQuestion(fetchedQuestions[0]);
-        } else if (!selectedQuestion && fallbackQuestions[category][difficulty].length > 0) {
-          setSelectedQuestion(fallbackQuestions[category][difficulty][0]);
-        }
-      } catch (err) {
-        setError("Failed to fetch questions. Using fallback questions.");
-        setQuestions(fallbackQuestions[category][difficulty]);
-        if (!selectedQuestion && fallbackQuestions[category][difficulty].length > 0) {
-          setSelectedQuestion(fallbackQuestions[category][difficulty][0]);
-        }
-      }
-      setLoading(false);
-    };
-    loadQuestions();
-  }, [category, difficulty, selectedQuestion]);
+    if (category && difficulty) {
+      generateQuestionsWithGemini(category, difficulty);
+    }
+  }, [category, difficulty]);
 
   const handleSubmit = async () => {
     if (!selectedQuestion || !essay.trim()) {
@@ -153,7 +158,7 @@ const EssayPractice = () => {
               value={selectedQuestion}
               onChange={(e) => setSelectedQuestion(e.target.value)}
               className="cyber-select"
-              disabled={loading}
+              disabled={loading || questions.length === 0}
             >
               <option value="">Select a question</option>
               {questions.map((q, index) => (
@@ -164,6 +169,7 @@ const EssayPractice = () => {
             </select>
           </div>
           {loading && <p className="cyber-text">Loading questions...</p>}
+          {error && <p className="cyber-text error">{error}</p>}
         </Card>
 
         <Card title="Write Essay" cyberpunk glowColor="purple">

@@ -79,6 +79,16 @@
   margin-bottom: 1.5rem;
 }
 
+.selector-container label {
+  font-family: 'Orbitron', sans-serif; /* Futuristic font */
+  font-size: 1.2rem; /* Slightly larger for emphasis */
+  font-weight: 600; /* Bold for prominence */
+  color: var(--white); /* Bright color for contrast */
+  text-shadow: 0 0 4px rgba(232, 185, 35, 0.3); /* Neon glow effect */
+  margin-bottom: 0.5rem; /* Space between label and dropdown */
+  display: block; /* Ensure it takes full width */
+}
+
 .cyber-select {
   width: 100%;
   padding: 0.8rem;
@@ -87,9 +97,11 @@
   color: var(--white);
   border: 1px solid var(--light-grey);
   border-radius: 8px;
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  appearance: none; /* Remove default arrow */
+  font-family: 'Roboto Mono', monospace; /* Monospaced cyberpunk font */
+  font-size: 1.1rem; /* Slightly larger for readability */
+  font-weight: 400; /* Normal weight for dropdown text */
+  text-shadow: 0 0 3px rgba(232, 185, 35, 0.2); /* Subtle neon glow */
+  appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23E8B923' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.8rem center;
@@ -107,6 +119,9 @@
   background: var(--dark-grey);
   color: var(--white);
   padding: 0.5rem;
+  font-family: 'Roboto Mono', monospace; /* Match dropdown font */
+  font-size: 1rem;
+  text-shadow: 0 0 3px rgba(232, 185, 35, 0.2); /* Subtle glow for options */
 }
 
 .cyber-textarea {

@@ -14,6 +14,8 @@ import CurrentAffairs from "./pages/CurrentAffairs";
 import EssayPractice from "./pages/EssayPractice";
 import TopicSummaries from "./pages/TopicSummaries";
 import NCERTLibrary from "./pages/NCERTLibrary";
+import Quiz from "./pages/Quiz";
+import MockTest from "./pages/MockTest";
 
 const AppContent = () => {
   const [showSplash, setShowSplash] = useState(true);
@@ -23,7 +25,9 @@ const AppContent = () => {
     "/current-affairs",
     "/essay-practice",
     "/topic-summaries",
-    "/ncert-library"
+    "/ncert-library",
+    "/quiz",
+    "/mock-test"
   ].includes(location.pathname);
 
   useEffect(() => {
@@ -31,7 +35,7 @@ const AppContent = () => {
 
     const timer = setTimeout(() => {
       setShowSplash(false);
-    }, 2000); // Show splash for 1.5 seconds
+    }, 2500); // Show splash for 2 seconds
 
     return () => clearTimeout(timer);
   }, []);
@@ -84,6 +88,22 @@ const AppContent = () => {
               element={
                 <PrivateRoute>
                   <NCERTLibrary />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/quiz"
+              element={
+                <PrivateRoute>
+                  <Quiz />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/mock-test"
+              element={
+                <PrivateRoute>
+                  <MockTest />
                 </PrivateRoute>
               }
             />

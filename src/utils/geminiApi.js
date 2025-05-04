@@ -1,6 +1,7 @@
+// src/api/geminiApi.js
 import axios from "axios";
 
-const GEMINI_API_KEY = "AIzaSyDVevfl4bYEq41es51A0d_rjlvEYIhgPKI";
+const GEMINI_API_KEY = process.env.REACT_APP_GEMINI_API_KEY;
 const GEMINI_API_URL =
   "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
 
@@ -42,11 +43,10 @@ export const evaluateEssay = async (question, essay) => {
     );
 
     const result = response.data.candidates[0].content.parts[0].text;
-    // Parse JSON response (Gemini may return it as a code block)
-    const cleanedResult = result.replace(/```json\n|\n```/g, "");
+    const cleanedResult = result.replace(/```json\n?|\n?```/g, "");
     return JSON.parse(cleanedResult);
   } catch (error) {
-    console.error("Gemini API error:", error);
+    console.error("Gemini API error:", error.response?.data || error.message);
     throw new Error("Failed to evaluate essay");
   }
 };

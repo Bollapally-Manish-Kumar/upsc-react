@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/components/splash-screen.css';
-import logo from '../assets/images/mainLogo.png';
+import logo from '../assets/images/logo-removebg-preview.png';
 
 const SplashScreen = () => {
   return (
