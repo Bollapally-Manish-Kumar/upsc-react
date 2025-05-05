@@ -13,7 +13,7 @@ const MockTest = () => {
   const [subjects, setSubjects] = useState([]);
 
   const questionsPerPage = 5;
-  const scheduledTime = new Date("2025-04-05T16:10:00+05:30"); // 4:10 PM IST on May 5, 2025
+  const scheduledTime = new Date("2025-05-05T09:39:00+05:30"); // 4:10 PM IST on May 5, 2025
   const GEMINI_API_KEY = process.env.REACT_APP_GEMINI_API_KEY;
 
   // Define possible subjects
