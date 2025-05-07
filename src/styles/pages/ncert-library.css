@@ -1,0 +1,89 @@
+.ncert-library-container {
+    background: var(--dark-bg);
+    min-height: 100vh;
+    padding: 3rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .ncert-library-content {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .page-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 2.5rem;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(232, 185, 35, 0.5);
+  }
+  
+  .cyber-text {
+    font-family: 'Inter', sans-serif;
+    color: var(--light-grey);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .neon-accent {
+    color: var(--gold);
+    text-shadow: 0 0 8px rgba(232, 185, 35, 0.7);
+  }
+  
+  .ncert-class-grid,
+  .standard-books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .cyber-button {
+    display: inline-block;
+    background: var(--glass-gradient);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--light-grey);
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .cyber-button:hover {
+    background: var(--gold);
+    color: var(--dark-bg);
+    box-shadow: 0 0 10px rgba(232, 185, 35, 0.7);
+  }
+  
+  .cyber-link {
+    color: var(--light-grey);
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .cyber-link:hover {
+    color: var(--gold);
+    text-shadow: 0 0 8px rgba(232, 185, 35, 0.6);
+  }
+  
+  .cyber-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .cyber-list li {
+    margin-bottom: 0.5rem;
+  }

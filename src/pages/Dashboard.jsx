@@ -74,6 +74,42 @@ const Dashboard = () => {
         >
           <p className="cyber-text">Access official UPSC resources, notifications, and updates directly.</p>
         </Card>
+
+        <Card 
+          title="UPSC Exam Requirements Awareness" 
+          buttonText="Learn More" 
+          buttonLink="https://www.upsc.gov.in/examinations/exam-instructions"
+          cyberpunk
+          glowColor="red"
+        >
+          <p className="cyber-text">
+            Understand the essential requirements for the UPSC exam, including documents like Aadhaar Card, to ensure a smooth exam experience.
+          </p>
+        </Card>
+
+        <Card 
+          title="IAS Eligibility Criteria" 
+          buttonText="Check Eligibility" 
+          buttonLink="/ias-eligibility"
+          cyberpunk
+          glowColor="cyan"
+        >
+          <p className="cyber-text">
+            Confirm your eligibility for the IAS exam, including age, education, and attempt limits.
+          </p>
+        </Card>
+
+        <Card 
+          title="Previous Years' IAS Question Papers" 
+          buttonText="Explore Papers" 
+          buttonLink="/previous-papers"
+          cyberpunk
+          glowColor="pink"
+        >
+          <p className="cyber-text">
+            Practice with past IAS question papers to enhance your preparation.
+          </p>
+        </Card>
       </div>
     </div>
   );

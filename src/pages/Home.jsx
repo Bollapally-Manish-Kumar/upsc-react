@@ -50,7 +50,7 @@ const Home = () => {
               <p>Evaluate your progress with mock tests and detailed performance analysis.</p>
             </div>
             <div className="service-item">
-              <h3>Expert Guidance</h3>
+              <h3>Guidance With AI</h3>
               <p>Get expert advice and strategies for tackling the UPSC exams efficiently.</p>
             </div>
           </div>
