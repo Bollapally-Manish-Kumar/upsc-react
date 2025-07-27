@@ -116,8 +116,3 @@ src/
 └── App.jsx      # Main entry
 ```
 
-Would you like me to:
-1. Add file descriptions?
-2. Include installation instructions?
-3. Add visual hierarchy with icons?
-4. Create a more condensed version?
